@@ -15,3 +15,26 @@ nav {
     font-weight: 2;
     text-align: center;
 }
+
+.h2 {
+    color: #003153;
+    font-size: 15px;
+    font-family: "Georgia";
+    text-align: center;
+}
+
+.p {
+    font-family: "Georgia";
+    color: #590202;
+    margin-right:20px;
+    margin-left:20px;
+    font-weight: bold;
+    border:2px groove black;
+    padding:10px;
+    text-align:center;
+    background-color: #d1d1d1;
+}
+
+body{
+  background-color: #a3a3a3;
+}
