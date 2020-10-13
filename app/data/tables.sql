@@ -5,23 +5,27 @@ drop table Person_Cert_Info;
 
 
 
-CREATE TABLE Person (
-    memberID INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    firstName VARCHAR(64),
-    lastName VARCHAR(64),
+CREATE TABLE Member (
+    memberID INTEGER PRIMARY KEY NOT NULL,
+    position VARCHAR(64) NULL,
+    firstName VARCHAR(64) NOT NULL,
+    lastName VARCHAR(64) NOT NULL,
     gender ENUM('female', 'male'),
-    address VARCHAR(64),
+    address VARCHAR(64) NOT NULL,
     city VARCHAR(64),
     state VARCHAR(64),
-    phone_num1 INT NULL,
-    phone_num2 INT NULL,
+    workPhone INT NULL,
     radio_num INT,
     station_num INT,
-    isActive TINYINT,
-    dob DATE NULL,
-    start_date DATE NULL,
-    postion VARCHAR(64) NULL
+    isActive ENUM("Active", "Not Active") Not Null default 'Not Active',
+    dob DATE NOT NULL,
+    start_date DATE DEFAULT NULL,
 );
+
+INSERT INTO Member (memberID, position, firstName, lastName, gender, address, city, state, workPhone, radio_num, station_num, isActive, dob, start_date) VALUES
+("001-1000", "Chief", "Kathryn", "Pryde", "Female", "1123 Xavier School Road", "Watkinsville", "GA", "707-555-1234", "A-1", "0", "Active", "12-02-1954", "02-01-2001"),
+("002-2000", "Firefighter", "Warren", "Worthington", "Male", "1140 Experimentville Road", "Watkinsville", "GA", "707-555-2222", "A-2", "1", "Active", "04-15-1975", "05-06-2003");
+
 
 CREATE TABLE Certifications (
     Certification_ID INT NOT NULL,
