@@ -20,8 +20,24 @@ methods: {
       gender: ""
     }
   },
+  handleNewMemberForm ( evt ){
+    evt.preventDefault();
 
+    console.log("Creating...!");
+    console.log(this.newMemberForm);
 
+    this.memberList.push(this.newMemberForm);
+
+    this.newMemberForm = this.newMemberData();
+  },
+
+  handleTriageForm ( evt ) {
+    console.log("Form submitted!");
+
+    this.triageForm.member = this.activeMember;
+    console.log(this.triageForm);
+
+  }
 created() {
     fetch("dummy/member-list.php")
     .then( response => response.json() )
@@ -31,10 +47,7 @@ created() {
 
       console.log(json)}
     );
-
-    })
+    this.newMemberForm = this.newMemberData();
+    }
 
 }
-
-
-})
