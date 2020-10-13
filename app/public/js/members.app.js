@@ -1,4 +1,3 @@
-window.onload = function () {
   var members = new Vue({
       el: '#membersApp',
       data: {
@@ -53,3 +52,4 @@ methods: {
   created() {
     this.fetchMembers();
   }
+})
