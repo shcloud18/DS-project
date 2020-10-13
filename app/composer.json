@@ -1,0 +1,14 @@
+{
+    "name": "iu-msis/ds-project",
+    "description": "An in-class example project",
+    "license": "private",
+    "authors": [{
+        "name": "Nicole LaRue"
+    }],
+    "require": {
+      "ramsey/uuid": "^4.1"
+    },
+    "autoload": {
+        "classmap": ["class/DbConnection.php"]
+    }
+}
