@@ -4,7 +4,7 @@
       <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <title>OCFR Home Page</title>
+        <title>Expired Certifications</title>
         <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -31,7 +31,7 @@
                  <ul class='nav navbar-nav'>
                      <li><a class="a" href="index.html">Home</a></li>
                      <li class='dropdown'>
-                         <a class="a dropdown-toggle" href="" data-toggle='dropdown'>Certifications<span> </span></a>
+                         <a class="a dropdown-toggle" href="certifications.html" data-toggle='dropdown'>Certifications<span> </span></a>
                          <ul class='dropdown-menu'>
                              <li><a href=''>Apply Now</a></li>
                              <li><a href='CheckStatus.html'>Check Status</a></li>
@@ -56,58 +56,46 @@
                  </ul>
              </div>
          </nav>
-
          <main class="row">
-                    <span>
-                        <img class="img-responsive " src="images/firetruck.jpg" alt="Ridgeway">
-                        <h2 class="h2"><strong><i>Celebrating 150 Years of Keeping our Community Safe</i></strong></h2>
-                    </span>
-                    <hr>
-
-                  <table class="table table-hover table-bordered">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </main>
-
-                <div class="Members" v-for="member in memberList" v-on:click="activePt = pt">
-                  <span class="memberID">{{ member.memberID }}</span>,
-                  <span clas="firstName">{{ member.firstName }}</span>
-                  <span class="lastName float-right">{{ member.lastName }}</span>
-                </div>
-
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="js/index.app.js"></script>
-
-</body>
-</html>
+           <h2>Expired Certifications</h2>
+           <table class="table">
+             <thead>
+               <tr>
+                 <th scope="col">Last</th>
+                 <th scope="col">First</th>
+                 <th scope="col">Certification</th>
+                 <th scope="col">Expired on</th>
+               </tr>
+             </thead>
+             <tbody>
+               <tr>
+                 <td>Altman</td>
+                 <td>Michael</td>
+                 <td>Firefighting</td>
+                 <td>2020-10-06</td>
+               </tr>
+               <tr>
+               </tr>
+               <tr>
+                 <td>LaRue</td>
+                 <td>Nicole</td>
+                 <td>Firefighting</td>
+                 <td>2018-03-20</td>
+               </tr>
+               <tr>
+                 <td>Bae</td>
+                 <td>Sean</td>
+                 <td>Hose Carrying</td>
+                 <td>2019-12-12</td>
+               </tr>
+               <tr>
+                 <td>Cloud</td>
+                 <td>Shaw</td>
+                 <td>Carbon Monoxide Smelling</td>
+                 <td>2016-05-09</td>
+               </tr>
+             </tbody>
+           </table>
+         </main>
+    </body>
+    </html>
