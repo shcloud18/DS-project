@@ -1,8 +1,9 @@
-var members = new Vue({
-el: '#MembersApp',
-data: {
-  members: [],
-  member: {}
+window.onload = function () {
+  var members = new Vue({
+      el: '#membersApp',
+      data: {
+          members: [],
+            member: {}
 
 },
 
@@ -10,7 +11,7 @@ methods: {
     fetchMembers() {
       fetch('api/firefighters/index.php')
       .then(response => response.json())
-      .then(json => { MembersApp.members = json })
+      .then(json => { membersApp.members = json })
     },
     handleSubmit() {
       fetch('api/firefighters/post.php', {
@@ -52,4 +53,3 @@ methods: {
   created() {
     this.fetchMembers();
   }
-});
