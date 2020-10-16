@@ -1,33 +1,73 @@
-window.onload = function () {
-  var members = new Vue({
+var membersapp = new Vue({
       el: '#membersApp',
       data: {
-          members: [],
-            member: {}
+          members: [{
+            memberID: '',
+            position: '',
+            firstName: '',
+            lastName: '',
+            gender: '',
+            address: '',
+            city: '',
+            state: '',
+            workPhone: '',
+            radioNumber: '',
+            stationNumber: '',
+            isActive: '',
+            dob: '',
+            startDate: ''
+          }],
+          newMember: {
+            memberID: '',
+            position: ''
+          }
 
-},
 
-methods: {
-    fetchMembers() {
-      fetch('api/firefighters/index.php')
-      .then(response => response.json())
-      .then(json => { membersApp.members = json })
+
+
+        },
+
+        methods:{
+          fetchMember() {
+            fetch('api/firefighters/')
+            .then(response => response.json())
+            .then(json => {
+              this.members=json;
+              console.log(this.members);
+    });
+  },
+
+
+    createMember() {
+      this.newMember.memberID = (this.newMember.position);
+      fetch('api/firefighters/post.php', {
+        method: 'POST',
+        body: JSON.stringify(this.newMember),
+        headers: {
+          "Content-Type": "application/json; charset=utf-8"
+        }
+      })
+      .then (respone => response.json() )
+      .then( json => {
+        console.log ("Returned from post:", json);
+        this.members.push(json[0]);
+        this.newMember = this.newMemberData();
+      });
+      console.log("Creating (POSTing)...!");
+      console.log(this.newMember);
     },
-  //   createMember() {
-  //     this.newUser.memberID = (this.)
-  //     fetch('api/firefighters/post.php', {
-  //       method: 'POST',
-  //       body: JSON.stringify(this.member),
-  //       headers: {
-  //         "Content-Type": "application/json; charset=utf-8"
-  //       }
-  //     })
-  //     .then (respone => response.json() )
-  //     .then( json => {
-  //       console.log ("Returned from post:", json);
-  //     });
-  //     console.log("Creating (POSTing)...!");
-  //     console.log(this.newUser)
+    newMemberData() {
+      return {
+        memberID: '',
+        position: ''
+      }
+    }
+  },
+  created(){
+    this.fetchMember();
+
+  }
+});
   //     window.alert("Member was created");
   //     window.location.href = 'members.html';
   //   },
@@ -56,7 +96,3 @@ methods: {
   //     window.alert("Member was deleted");
   //     window.location.href = 'members.html';
   //   }
-  // },
-  // created() {
-  //   this.fetchMembers();
-  // });
