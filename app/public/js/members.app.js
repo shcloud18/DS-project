@@ -67,6 +67,7 @@ var membersapp = new Vue({
     this.fetchMember();
 
   }
+
 });
   //     window.alert("Member was created");
   //     window.location.href = 'members.html';
@@ -96,3 +97,6 @@ var membersapp = new Vue({
   //     window.alert("Member was deleted");
   //     window.location.href = 'members.html';
   //   }
+=======
+})
+
