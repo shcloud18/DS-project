@@ -19,7 +19,7 @@ CREATE TABLE Member (
     stationNumber INT,
     isActive ENUM("Active", "Not Active") Not Null default 'Not Active',
     dob DATE NOT NULL,
-    startDate DATE DEFAULT NULL,
+    startDate DATE DEFAULT NULL
 );
 
 INSERT INTO Member (memberID, position, firstName, lastName, gender, address, city, state, workPhone, radioNumber, stationNumber, isActive, dob, startDate) VALUES

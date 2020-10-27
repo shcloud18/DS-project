@@ -1,28 +1,36 @@
 commentApp = new Vue({
-  el: '#commentText',
+  el: '#memberReport',
   data:{
-    comments: [{
-      id:'',
-      commentText:''
+    memberData: [{
+      memberID:'',
+      firstName:'',
+      lastName:'',
+      stationNumber:'',
+      radioNumber:'',
+      stationNumber:'',
     }],
     newComment: {
-      id:'',
-      commentText:''
+      memberID:'',
+      firstName:'',
+      lastName:'',
+      stationNumber:'',
+      radioNumber:'',
+      stationNumber:'',
     }
   },
   methods:{
-    fetchComment(){
-      fetch('api/comments/index.php')
+    fetchMember(){
+      fetch('api/memberReport/index.php')
       .then(response => response.json())
       .then(json => {
-        this.comments=json;
-        console.log(this.comments);
+        this.memberData=json;
+        console.log(this.memberData);
       });
     },
-    createComment(){
-      fetch('api/comments/create.php', {
+    createMember(){
+      fetch('api/memberReport/create.php', {
         method:'POST',
-        body: JSON.stringify(this.newComment),
+        body: JSON.stringify(this.memberData),
         headers: {
           "Content-Type": "application/json; charset=utf-8"
         }
@@ -30,22 +38,26 @@ commentApp = new Vue({
       .then( response => response.json() )
       .then( json => {
         console.log("Returned from post:", json);
-        this.comments = json;
-        this.newComment = this.newCommentData();
+        this.memberData = json;
+        this.newComment = this.newMemberData();
       });
       console.log("Creating (POSTing)...!");
       console.log(this.newComment);
-      this.fetchComment();
+      this.fetchMember();
     },
-      newCommentData() {
+      newMemberData() {
         return {
-          id: "",
-          commentText: ""
+          memberID: "",
+          firstName: "",
+          lastname:'',
+          stationNumber:'',
+          radioNumber:'',
+          stationNumber:'',
         }
       }
 
   },
   created(){
-    this.fetchComment();
+    this.fetchMember();
   }
 });

@@ -6,13 +6,13 @@ require 'common.php';
 $db = DbConnection::getConnection();
 
 //create and run query
-$sql = 'SELECT * FROM Comments';
+$sql = 'SELECT * FROM Member';
 $vars = [];
 
-if (isset($_GET['id'])) {
+if (isset($_GET['memberID'])) {
   //this is a peramiterized query
-  $sql = 'SELECT * FROM Comments WHERE id = ?';
-  $vars = [ $_GET['id'] ];
+  $sql = 'SELECT * FROM Member WHERE memberID = ?';
+  $vars = [ $_GET['memberID'] ];
 }
 
 $stmt = $db->prepare($sql);
