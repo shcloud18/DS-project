@@ -18,10 +18,10 @@ if (isset($_GET['memberID'])) {
 $stmt = $db->prepare($sql);
 $stmt->execute($vars);
 
-$comments = $stmt->fetchAll();
+$memberReport = $stmt->fetchAll();
 
 //convert to JSON
-$json = json_encode($comments, JSON_PRETTY_PRINT);
+$json = json_encode($memberReport, JSON_PRETTY_PRINT);
 
 //output
 header('Content-Type: application/json');
