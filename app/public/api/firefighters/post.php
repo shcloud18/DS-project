@@ -1,6 +1,6 @@
 <?php
 
-require 'common.php'
+require 'common.php';
 
 
 $db = DbConnection::getConnection();
@@ -32,4 +32,4 @@ $stmt->execute([
 
 
 header('HTTP/1.1 303 See Other');
-header('Location: ../firefighters/?memberID='. $_POST['userId']);
+header('Location: ../firefighters');
