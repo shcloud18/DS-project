@@ -54,6 +54,29 @@
   <p class = "p"> This website is for OCFR volunteers and employees only. Information on this site must not be released to the public without permission. </p>
 </div>
 
+<!-- Certification table -->
+<h3>Certifications</h3>
+<div class="container-fluid">
+  <table class="table" id="" >
+    <thead>
+      <tr>
+        <th scope="col">Certification Name</th>
+        <th scope="col">Expiration Period</th>
+        <th scope="col">Certifying Agency</th>
+        <th scope="col">Functions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="cert in Certifications">
+        <td>{{cert.certificationName}}</td>
+        <td>{{cert.certifyingAgency}}</td>
+        <td>{{cert.defaultexpirationPeriod}}</td>
+        <!-- Modal buttons -->
+        <td>
+           <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Detail</button>
+
+
+
 
       <button type="button" class="btn btn-primary" onclick="location.href='newcertificate.html'">Add new certification</button>
   </main>
@@ -63,6 +86,6 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="js/index.app.js"></script>
+  <script src="js/certification.app.js"></script>
     </body>
     </html>
