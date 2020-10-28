@@ -1,6 +1,6 @@
 <?php
 
-require 'common.php'
+require 'common.php';
 
 
 $db = DbConnection::getConnection();
@@ -8,8 +8,8 @@ $db = DbConnection::getConnection();
 
 $stmt = $db->prepare(
   'INSERT INTO Member
-  (memberID, position, firstName, lastName, gender, address, city, state, workPhone, radioNumber, stationNumber, isActive, dob, startDate)
-  VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)'
+  (memberID, position, firstName, lastName, email, gender, address, city, state, workPhone, radioNumber, stationNumber, isActive, dob, startDate)
+  VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)'
 );
 
 
@@ -18,6 +18,7 @@ $stmt->execute([
   $_POST['position'],
   $_POST['firstName'],
   $_POST['lastName'],
+  $_POST['email'],
   $_POST['gender'],
   $_POST['address'],
   $_POST['city'],
@@ -32,4 +33,4 @@ $stmt->execute([
 
 
 header('HTTP/1.1 303 See Other');
-header('Location: ../firefighters/?memberID='. $_POST['userId']);
+header('Location: ../firefighters');

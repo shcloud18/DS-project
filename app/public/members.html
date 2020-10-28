@@ -47,9 +47,6 @@
             <div class="row" id="membersApp">
               <div class= "col-lg-3 col-md-3 col-sm-3 col-xs-3" >
                 <div class="members" v-for="member in members">
-                  <span class="memberID"> Member ID: {{  member.memberID  }}</span>
-                  <span class="position"> Position: {{ member.position }}</span>
-
                 </div>
                 <br>
                 <table class="table table-bordered table-striped table-hover table-condensed col-lg-10 col-md-10 col-sm-10 col-xs-10">
@@ -59,6 +56,7 @@
                             <th class="text-center">Position</th>
                             <th class="text-center">First Name</th>
                             <th class="text-center">Last Name</th>
+                            <th class="text-center">Email</th>
                             <th class="text-center">Gender</th>
                             <th class="text-center">Address</th>
                             <th class="text-center">City</th>
@@ -80,6 +78,7 @@
                        <td> {{ member.position }}</td>
                        <td> {{ member.firstName }}</td>
                        <td> {{ member.lastName }}</td>
+                       <td> {{ member.email }} </td>
                        <td> {{ member.gender }}</td>
                        <td> {{ member.address }}</td>
                        <td> {{ member.city }}</td>
@@ -90,6 +89,9 @@
                        <td> {{ member.isActive }}</td>
                        <td> {{ member.dob }}</td>
                        <td> {{ member.startDate }}</td>
+                       <td><button title="Detail" @click="handleClick(m)" data-toggle="modal" data-target="#modal-detail"><img src="./img/detail.png" class="button"></button>
+                <button title="Edit" @click="handleEdit(m)"><img src="./img/edit.png" class="button"></button>
+                <button title="Delete" @click="handleDelete(m)"><img src="./img/delete.png" class="button"></button></td>
 
 
                    </tr>
@@ -98,26 +100,56 @@
 
 
 
-
-
-
-                <form v-on:submit.prevent="createMember()">
+                <form v-on:submit.prevent="createMember()" method="post" id="newMemberForm">
                   <div class="members">
-                    <label for="memberID"> Member ID</label>
+                    <label for="memberID"> Member ID </label>
                     <input type="text" v-model="newMember.memberID" class="form-control" id="memberID">
-                    <label for="position"> Position</label>
+                    <label for="position"> Position </label>
                     <input type="text" v-model="newMember.position" class="form-control" id="position">
+                    <label for="firstName"> First Name </label>
+                    <input type="text" v-model= "newMember.firstName" class="form-control" id="firstname">
+                    <label for="lastName"> Last Name </label>
+                    <input type="text" v-model= "newMember.lastName" class="form-control" id="lastname">
+                    <label for="email"> Email </label>
+                    <input type="text" v-model="newMember.email" class="form-control" id="email">
+                    <label for="gender"> Gender </label>
+                    <input type="text" v-model="newMember.gender" class= "form-control" id="gender">
+                    <label for="address"> Address </label>
+                    <input type="text" v-model="newMember.address" class="form-control" id="address">
+                    <label for="city"> City </label>
+                    <input type="text" v-model="newMember.city" class="form-control" id="city">
+                    <label for="address"> State </label>
+                    <input type="text" v-model="newMember.state" class="form-control" id="state">
+                    <label for="address"> Work Phone </label>
+                    <input type="tel" v-model="newMember.workPhone" class="form-control" id="phone">
+                    <label for="address"> Radio Number </label>
+                    <input type="number" v-model="newMember.radioNumber" class="form-control" id="radionumber">
+                    <label for="address"> Station Number </label>
+                    <input type="text" v-model="newMember.stationNumber" class="form-control" id="address">
+                    <label for="status"> Status </label>
+                    <select class="form-control" id="status" v-model="newMember.isActive" required>
+                      <option></option>
+                      <option>Active</option>
+                      <option>Not Active</option>
+                    </select>
+                    <label for="dob"> Date of Birth </label>
+                    <input type="date" v-model="newMember.dob" class="form-control" id="dob">
+                    <label for="startdate"> Start Date </label>
+                    <input type="date" v-model="newMember.startDate" class="form-control" id="startdate">
                   </div></br>
-                  <input type="submit" value="Create Member" class="button">
+                  <button type="submit" value="Submit" class="btn btn-primary" id=submitNewMember> Add New Member </button>
                 </form>
+                <br>
               </div>
             </div>
           </div>
+          <p> Every field is required, please put "N/A" for fields where info is not available. </p>
+
          <!-- <main class="row">
 
            <div class="row">
 
-                 <!-- <div class="col-lg-12 my-5"> -->
+                 <! <div class="col-lg-12 my-5"> -->
                    <!-- <h2><strong>Firefighters</strong></h2>
                    <div id="membersApp">
                      <div>
@@ -150,7 +182,7 @@
                      </tbody>
                    </table>
                  </div>
-<!--mute out rest
+<!mute out rest
                 <div class="Members" v-for="member in members" v-on:click="activePt = pt">
                   <span class="memberID">{{ member.memberID }}</span>,
                   <span clas="firstName">{{ member.firstName }}</span>
@@ -202,7 +234,7 @@
                                  </ul>
                              </table>
                            </div>
---> -->
+-->
 </main>
 
 
@@ -211,7 +243,7 @@
 <link rel="stylesheet" href="css/styles.css">
 <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js"></script>
