@@ -56,6 +56,7 @@
                             <th class="text-center">Position</th>
                             <th class="text-center">First Name</th>
                             <th class="text-center">Last Name</th>
+                            <th class="text-center">Email</th>
                             <th class="text-center">Gender</th>
                             <th class="text-center">Address</th>
                             <th class="text-center">City</th>
@@ -77,6 +78,7 @@
                        <td> {{ member.position }}</td>
                        <td> {{ member.firstName }}</td>
                        <td> {{ member.lastName }}</td>
+                       <td> {{ member.email }} </td>
                        <td> {{ member.gender }}</td>
                        <td> {{ member.address }}</td>
                        <td> {{ member.city }}</td>
@@ -87,6 +89,9 @@
                        <td> {{ member.isActive }}</td>
                        <td> {{ member.dob }}</td>
                        <td> {{ member.startDate }}</td>
+                       <td><button title="Detail" @click="handleClick(m)" data-toggle="modal" data-target="#modal-detail"><img src="./img/detail.png" class="button"></button>
+                <button title="Edit" @click="handleEdit(m)"><img src="./img/edit.png" class="button"></button>
+                <button title="Delete" @click="handleDelete(m)"><img src="./img/delete.png" class="button"></button></td>
 
 
                    </tr>
@@ -105,6 +110,8 @@
                     <input type="text" v-model= "newMember.firstName" class="form-control" id="firstname">
                     <label for="lastName"> Last Name </label>
                     <input type="text" v-model= "newMember.lastName" class="form-control" id="lastname">
+                    <label for="email"> Email </label>
+                    <input type="text" v-model="newMember.email" class="form-control" id="email">
                     <label for="gender"> Gender </label>
                     <input type="text" v-model="newMember.gender" class= "form-control" id="gender">
                     <label for="address"> Address </label>
@@ -136,6 +143,7 @@
               </div>
             </div>
           </div>
+          <p> Every field is required, please put "N/A" for fields where info is not available. </p>
 
          <!-- <main class="row">
 
