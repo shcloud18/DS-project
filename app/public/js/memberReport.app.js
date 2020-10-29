@@ -7,15 +7,15 @@ commentApp = new Vue({
       lastName:'',
       stationNumber:'',
       radioNumber:'',
-      stationNumber:'',
+      email:'',
     }],
-    newComment: {
+    newMember: {
       memberID:'',
       firstName:'',
       lastName:'',
       stationNumber:'',
       radioNumber:'',
-      stationNumber:'',
+      email:'',
     }
   },
   methods:{
@@ -42,7 +42,7 @@ commentApp = new Vue({
         this.newComment = this.newMemberData();
       });
       console.log("Creating (POSTing)...!");
-      console.log(this.newComment);
+      console.log(this.newMember);
       this.fetchMember();
     },
       newMemberData() {
@@ -52,7 +52,7 @@ commentApp = new Vue({
           lastname:'',
           stationNumber:'',
           radioNumber:'',
-          stationNumber:'',
+          email:'',
         }
       }
 

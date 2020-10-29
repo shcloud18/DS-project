@@ -50,14 +50,22 @@
 
           <!-- Start of Vue.JS -->
           <div id="memberReport">
-            <table class="Table" id="commentText">
-              <thead>
-                <th>Member Report</th>
+            <h2> Member Report </h2>
+            <table class="table table-striped" id="memberTable">
+              <thead class="thead-dark">
+                <th>Station Number</th>
+                <th>Radio Number</th>
+                <th data-sort-method='none'>Last</th>
+                <th data-sort-method='none'>First</th>
+                <th data-sort-method='none'>Email</th>
               </thead>
               <tbody id="commentTabeBody">
                 <tr v-for="member in memberData">
-                  <td>{{member.memberID}}</td>
-                  <td>{{member.commentText}}</td>
+                  <td>{{member.stationNumber}}</td>
+                  <td>{{member.radioNumber}}</td>
+                  <td>{{member.lastName}}</td>
+                  <td>{{member.firstName}}</td>
+                  <td>{{member.email}}</td>
                 </tr>
               </tbody>
             </table>
@@ -73,5 +81,8 @@
          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
          <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
          <script src="js/memberReport.app.js"></script>
+         <!-- table sort from https://github.com/tristen/tablesort -->
+         <script src=js/tablesort.min.js></script>
+         <script>new Tablesort(document.getElementById('memberTable'));</script>
     </body>
     </html>
