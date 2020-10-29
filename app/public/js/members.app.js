@@ -6,6 +6,7 @@ var membersapp = new Vue({
             position: '',
             firstName: '',
             lastName: '',
+            email: '',
             gender: '',
             address: '',
             city: '',
@@ -19,12 +20,21 @@ var membersapp = new Vue({
           }],
           newMember: {
             memberID: '',
-            position: ''
+            position: '',
+            firstName: '',
+            lastName: '',
+            email: '',
+            gender: '',
+            address: '',
+            city: '',
+            state: '',
+            workPhone: '',
+            radioNumber: '',
+            stationNumber: '',
+            isActive: '',
+            dob: '',
+            startDate: ''
           }
-
-
-
-
         },
 
         methods:{
@@ -39,7 +49,6 @@ var membersapp = new Vue({
 
 
     createMember() {
-      this.newMember.memberID = (this.newMember.position);
       fetch('api/firefighters/post.php', {
         method: 'POST',
         body: JSON.stringify(this.newMember),
@@ -47,10 +56,10 @@ var membersapp = new Vue({
           "Content-Type": "application/json; charset=utf-8"
         }
       })
-      .then (respone => response.json() )
+      .then (response => response.json() )
       .then( json => {
         console.log ("Returned from post:", json);
-        this.members.push(json[0]);
+        this.members = json;
         this.newMember = this.newMemberData();
       });
       console.log("Creating (POSTing)...!");
@@ -59,7 +68,20 @@ var membersapp = new Vue({
     newMemberData() {
       return {
         memberID: '',
-        position: ''
+        position: '',
+        firstName: '',
+        lastName: '',
+        email: '',
+        gender: '',
+        address: '',
+        city: '',
+        state: '',
+        workPhone: '',
+        radioNumber: '',
+        stationNumber: '',
+        isActive: '',
+        dob: '',
+        startDate: ''
       }
     }
   },
@@ -96,7 +118,3 @@ var membersapp = new Vue({
   //     })
   //     window.alert("Member was deleted");
   //     window.location.href = 'members.html';
-  //   }
-=======
-})
-
