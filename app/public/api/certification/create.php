@@ -6,7 +6,7 @@ $db = DbConnection::getConnection();
 //Step 2 : Create & run the query
 // Note the use of parameterized statements to avoid injection
 $stmt = $db->prepare(
-  'INSERT INTO Certifications  (certificationID, certificationName, certifyingAgency, defaultexpirationPeriod)
+  'INSERT INTO Certification  (certificationID, certificationName, certifyingAgency, defaultexpirationPeriod)
   VALUES  (?,?,?,?)'
 );
 

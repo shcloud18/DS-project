@@ -6,11 +6,11 @@ require 'common.php';
 $db = DbConnection::getConnection();
 
 // Step 2: Create & run the query
-$sql = 'SELECT * FROM Certifications';
+$sql = 'SELECT * FROM Certification';
 $vars = [];
 
 if (isset($_GET['certificationID'])) {
-  $sql = 'SELECT * FROM Certifications WHERE certificationID = ?';
+  $sql = 'SELECT * FROM Certification WHERE certificationID = ?';
   $vars = [ $_GET['certificationID'] ];
 }
 
