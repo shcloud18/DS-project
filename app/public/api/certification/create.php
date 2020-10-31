@@ -6,18 +6,19 @@ $db = DbConnection::getConnection();
 //Step 2 : Create & run the query
 // Note the use of parameterized statements to avoid injection
 $stmt = $db->prepare(
-  'INSERT INTO Certifications  (certificationName, certifyingAgency, defaultexpirationPeriod)
-  VALUES  (?,?,?)'
+  'INSERT INTO Certifications  (certificationID, certificationName, certifyingAgency, defaultexpirationPeriod)
+  VALUES  (?,?,?,?)'
 );
 
 $stmt->execute([
+  $_POST['certificationID'],
   $_POST['certificationName'],
   $_POST['certifyingAgency'],
   $_POST['defaultexpirationPeriod']
 ]);
 
 // If needed, get auto-generated PK from // DB
-$pk = $db->LastInsertId();  //https://www.php.net/manual/en/pdo.Lastinsertid.php
+// $pk = $db->LastInsertId();  //https://www.php.net/manual/en/pdo.Lastinsertid.php
 
 // Step 4: Output
 // Here, instead of giving output, I'm redirecting to the SELECT API,
