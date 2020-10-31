@@ -7,13 +7,19 @@ waitingApp = new Vue({
       certificationName:'',
       defaultexpirationPeriod:''
     }],
-    newCertForm:{
+    newCert:{
       certificationID:'',
       certifyingAgency:'',
       certificationName:'',
       defaultexpirationPeriod:''
     }
   },
+
+  created() {
+    this.fetchCert();
+  },
+
+
   methods:{
     fetchCert(){
       fetch('api/certification/index.php')
@@ -27,7 +33,7 @@ waitingApp = new Vue({
     createCert(){
       fetch('api/certification/create.php',{
         method:'POST',
-        body: JSON.stringify(this.newCertForm),
+        body: JSON.stringify(this.newCert),
         headers:{
           "Content-Type": "application/json; charset=utf-8"
         }
@@ -36,41 +42,32 @@ waitingApp = new Vue({
       .then( json => {
         console.log("Returned from post:", json);
         this.certList = json;
-        this.newCertForm = this.newCertData();
+        this.newCert = this.newCertData();
       });
-      console.log("Creating (POSTing)...!");
-      console.log(this.newCertForm);
-      this.fetchCert();
     },
 
-    newCertData() {
-      return {
-        certificationID:'',
-        certifyingAgency:'',
-        certificationName:'',
-        defaultexpirationPeriod:''
+    newCertData(){
+      return{
+        certificationID: '',
+        certificationName: '',
+        certifyingAgency: '',
+        defaultexpirationPeriod: ''
       }
     },
 
-    certEdit(){
-      window.location.href = "editCertification.html?certificationID="+cert.certificationID;
-    },
-
-    certDelete(){
-      fetch('api/certification/delete.php',{
-        method: 'POST',
-        body: JSON.stringify(cert),
-        headers:{
-          "Content-Type": "application/json; charset=utf-8"
-        }
-      })
-      window.alert("Certification has been deleted")
-      window.location.href = 'certifications.html'
-    }
-  },
-  created(){
-    this.fetchCert();
-  }
+    // deleteCert(){
+    //   fetch('api/certification/delete.php',{
+    //     method: 'POST',
+    //     body: JSON.stringify(this.activeCert),
+    //     headers: {
+    //       "content-Type": "application/json; charset=utf-8"
+    //     }
+    //   })
+    //   console.log("creating (POSTing)...!");
+    //   console.log(this.activeCert);
+    // }
+    // },
+}
 })
 
 // Codes reference from MSIS triage 2020 and GA Help Session
