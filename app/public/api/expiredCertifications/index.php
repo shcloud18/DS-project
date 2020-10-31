@@ -2,17 +2,15 @@
 
 require 'common.php';
 
+//get database connection from helper class
 $db = DbConnection::getConnection();
 
-$sql = 'SELECT M.firstName, M.lastName, M.position, C.certificationName, P.renewedDate, P.expirationDate, P.status,
-cast(date_add(P.renewedDate, INTERVAL CAST(C.defaultExpirationPeriod AS Unsigned) YEAR) as DATE)  as expirationDate,
-Case When (date_add(P.renewedDate, INTERVAL CAST(C.defaultExpirationPeriod AS Unsigned) YEAR)<=sysdate()) then "Expired" else "Not Expired" end as overdue
-from Member as M, Certifications as C, Person_Cert_Info as P
-where C.certificationID=P.certificationID and M.memberID=P.memberID ';
+//create and run query
+$sql = 'SELECT * FROM MemberCertAssociation SELECT * FROM Member SELECT * FROM Certification';
 $vars = [];
 
 if (isset($_GET['memberID'])) {
-  // This is an example of a parameterized query
+  //this is a peramiterized query
   $sql = 'SELECT * FROM Member WHERE memberID = ?';
   $vars = [ $_GET['memberID'] ];
 }
@@ -22,7 +20,9 @@ $stmt->execute($vars);
 
 $expiredcerts = $stmt->fetchAll();
 
+//convert to JSON
 $json = json_encode($expiredcerts, JSON_PRETTY_PRINT);
 
+//output
 header('Content-Type: application/json');
 echo $json;

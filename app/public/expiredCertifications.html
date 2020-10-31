@@ -68,9 +68,9 @@
              <tbody class="text-center">
 
 <tr v-for="cert in ExpiredCertifications">
-                 <td>  cert.firstName  </td>
-                 <td>  cert.lastName</td>
-                 <td> cert.position </td>
+                 <td>  {{ cert.renewedDate }}  </td>
+                 <td>  {{ cert.expirationDate }}</td>
+                 <td> {{ cert.certStatus }} </td>
                  <!-- <td> {{ cert.certificationName }}</td>
                  <td> {{ cert.renewedDate }}</td>
                  <td> {{ cert.expirationDate }}</td>
