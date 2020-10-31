@@ -2,32 +2,42 @@ var expiredCertificationsApp = new Vue({
       el: '#expiredCertificationsApp',
       data: {
         ExpiredCertifications: [{
-          firstName: '',
-          lastName: '',
-          position: '',
-          certificationName: '',
+        }],
+        newcerts: {
           renewedDate: '',
           expirationDate: '',
-          status: ''
-        }],
-        certs: {
-          certificationName: " "
+          certStatus: ''
         }
 
     },
     methods: {
       fetchExpiredCertifications() {
-        fetch('api/expiredCertifications/index.php')
+        fetch('api/expiredCertifications/')
         .then(response => response.json())
         .then(json => {
           this.ExpiredCertifications=json;
           console.log(this.ExpiredCertifications);
+},
+fetchExpCertsFilter() {
+    fetch('api/reports/expCertsFilter.php')
+    .then(response => response.json())
+    .then(json => { expCertApp.ExpCertsFilter = json })
+  },
 
-      });
-    },
-    created() {
-      this.fetchExpiredCertifications();
-
-    }
-  }
+  handleSubmitCertDetail(event) {
+        fetch('api/reports/expCertsFiltered.php', {
+          method: 'POST',
+          body: JSON.stringify(this.certs),
+          headers: {
+            "Content-Type": "application/json; charset=utf-8"
+          }
+        })
+        .then(response => response.json())
+        .then(json => { expCertApp.ExpCerts = json })
+      },
+},
+created() {
+  this.fetchExpCerts();
+  this.fetchExpCertsFilter();
+}
 });
