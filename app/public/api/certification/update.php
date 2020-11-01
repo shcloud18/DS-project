@@ -1,10 +1,12 @@
 <?php
+require 'common.php';
 
 $db = DbConnection::getConnection();
 
 $stmt = $db->prepare(
   'UPDATE Certification
   SET certificationName = ?, certifyingAgency = ?, defaultexpirationPeriod = ? WHERE certificationID = ?'
+
 );
 
 $stmt->execute([
@@ -14,4 +16,5 @@ $stmt->execute([
   $_POST['defaultexpirationPeriod']
 ]);
 
-header('HTTP/1.1 303 See Other');
+header('Content-Type: application/json');
+echo $json;
