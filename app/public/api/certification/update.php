@@ -5,7 +5,7 @@ $db = DbConnection::getConnection();
 
 $stmt = $db->prepare(
   'UPDATE Certification
-  SET certificationName = ?, certifyingAgency = ?, defaultexpirationPeriod = ? WHERE certificationID = ?'
+  SET certificationName = ?, certifyingAgency = ?, defaultExpirationPeriod = ? WHERE certificationID = ?'
 
 );
 
@@ -13,7 +13,7 @@ $stmt->execute([
   $_POST['certificationID'],
   $_POST['certificationName'],
   $_POST['certifyingAgency'],
-  $_POST['defaultexpirationPeriod']
+  $_POST['defaultExpirationPeriod']
 ]);
 
 header('Content-Type: application/json');
