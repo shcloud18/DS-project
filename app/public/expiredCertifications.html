@@ -68,18 +68,44 @@
              <tbody class="text-center">
 
 <tr v-for="cert in ExpiredCertifications">
-                 <td>  {{ cert.renewedDate }}  </td>
-                 <td>  {{ cert.expirationDate }}</td>
-                 <td> {{ cert.certStatus }} </td>
-                 <!-- <td> {{ cert.certificationName }}</td>
+                 <td>  {{ cert.firstName }}  </td>
+                 <td>  {{ cert.lastName }}</td>
+                 <td> {{ cert.position }} </td>
+                 <td> {{ cert.certificationName }}</td>
                  <td> {{ cert.renewedDate }}</td>
                  <td> {{ cert.expirationDate }}</td>
-                 <td> {{ cert.status }}</td> -->
+                 <td> {{ cert.certStatus }}</td>
                </tr>
              </tbody>
            </table>
+
+
+           <div class="col-lg-12 my-5">
+           <form v-on:submit.prevent="handleExpiredCerts()" method="post" id="expiredcertsdropdown">
+             <fieldset>
+               <legend>Expired Certification Report Filter</legend>
+               <div class = "expcerts">
+                 <p>
+                   <label for="expcert"> Certifications</label>
+                   <select name="column" id = "certifications" v-model = "certifications.certificationName">
+                     <option value = " " selected>No Filter</option>
+                     <option v-for = "cert in ExpiredCertifications"> {{ cert.certificationName }} </option>
+                   </select>
+                   <input type = "submit" name = "submit" value = "Search">
+                 </p>
+               </div>
+</fieldset>
+</form>
+
+
+
+
+
+
          </div>
        </div>
+
+
          </main>
 
          <link rel="stylesheet" href="css/styles.css">
