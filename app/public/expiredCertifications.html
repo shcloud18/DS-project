@@ -67,7 +67,7 @@
              </thead>
              <tbody class="text-center">
 
-<tr v-for="cert in ExpiredCertifications">
+<tr v-for="cert in ExpiredCertifications" v-if="certifications.certificationName=='' || certifications.certificationName == cert.certificationName">
                  <td>  {{ cert.firstName }}  </td>
                  <td>  {{ cert.lastName }}</td>
                  <td> {{ cert.position }} </td>
@@ -80,21 +80,28 @@
            </table>
 
 
-           <div class="col-lg-12 my-5">
-           <form v-on:submit.prevent="handleExpiredCerts()" method="post" id="expiredcertsdropdown">
-             <fieldset>
-               <legend>Expired Certification Report Filter</legend>
-               <div class = "expcerts">
-                 <p>
+           <div class= "choose">
+             <h4> Filter by Certification </h4>
+             <select v-model="certifications.certificationName">
+               <option value=""> All</option>
+               <option v-for= "cert in ExpiredCertifications">{{ cert.certificationName }} </option>
+             </select>
+           </div>
+         </br>
+
+
+
+
+           <!-- <form v-on:submit.prevent="handleExpiredCerts()" method="post" id="expiredcertsdropdown">
+               <div class = "form-group">
                    <label for="expcert"> Certifications</label>
-                   <select name="column" id = "certifications" v-model = "certifications.certificationName">
-                     <option value = " " selected>No Filter</option>
-                     <option v-for = "cert in ExpiredCertifications"> {{ cert.certificationName }} </option>
-                   </select>
-                   <input type = "submit" name = "submit" value = "Search">
-                 </p>
+                   <input type="text" v-model = "certifications.certificationName" placeholder="CPR">
+                     <div id="success"></div>
+                     <button class = "btn btn-primary btn-sm" onclick="success()" id="submit" type="submit"> Search </button>
+                   </div> -->
+
                </div>
-</fieldset>
+
 </form>
 
 
@@ -105,7 +112,7 @@
          </div>
        </div>
 
-
+</body>
          </main>
 
          <link rel="stylesheet" href="css/styles.css">
