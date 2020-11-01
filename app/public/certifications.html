@@ -44,15 +44,10 @@
        </nav>
 
          <main class="row">
-                    <span>
-                        <img class="img-responsive " src="images/firetruck.jpg" alt="Ridgeway">
-                        <h2 class="h2"><strong><i>Celebrating 150 Years of Keeping our Community Safe</i></strong></h2>
-                    </span>
+
                     <hr>
 
-<div class="container-fluid">
-  <p class = "p"> This website is for OCFR volunteers and employees only. Information on this site must not be released to the public without permission. </p>
-</div>
+
 
 <!-- Certification table -->
 <div class="container-fluid" id="certificationApp">
@@ -64,47 +59,74 @@
         <th scope="col">Certification Name</th>
         <th scope="col">Expiration Period</th>
         <th scope="col">Certifying Agency</th>
-        <th scope="col">Functions</th>
       </tr>
     </thead>
     <tbody>
-      <tr class="certList" v-for="cert in certList">
-        <td>{{cert.certificationID}}</td>
-        <td>{{cert.certificationName}}</td>
-        <td>{{cert.certifyingAgency}}</td>
-        <td>{{cert.defaultexpirationPeriod}}</td>
+      <tr class="certList" v-for="c in certList">
+        <td>{{c.certificationID}}</td>
+        <td>{{c.certificationName}}</td>
+        <td>{{c.certifyingAgency}}</td>
+        <td>{{c.defaultExpirationPeriod}}</td>
         <!-- Modal buttons -->
-        <td>
-           <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Detail</button>
-           <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Edit</button>
-           <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal">Delete</button>
-
       </tr>
     </tbody>
   </table>
 
-  <!-- Forms -->
-  <form v-on:submit.prevent="createCert()" id="newCertForm">
+<!-- Forms -->
+  <form v-on:submit.prevent="createCert()" method="post" id="newCert">
     <div class="form-group">
       <label for="cID"> Certification ID </label>
-      <input type="text" v-model="newCertForm.certificationID" placeholder="C0001">
+      <input type="text" v-model="newCert.certificationID" placeholder="C0001">
     </div>
     <div class="form-group">
       <label for="cName"> Certification Name </label>
-      <input type="text" v-model="newCertForm.certificationName" placeholder="Certification Name">
+      <input type="text" v-model="newCert.certificationName" placeholder="Certification Name">
     </div>
     <div class="form-group">
       <label for="cAgency"> Certifying Agency </label>
-      <input type="text" v-model="newCertForm.certifyingAgency" placeholder="Agency Name">
+      <input type="text" v-model="newCert.certifyingAgency" placeholder="Agency Name">
     </div>
     <div class="form-group">
       <label for="defaultexpPeriod"> Expiration Period </label>
-      <input type="text" v-model="newCertForm.defaultexpirationPeriod" placeholder="Expiration Year">
+      <input type="text" v-model="newCert.defaultExpirationPeriod" placeholder="Expiration Year">
     </div>
+
+    <div>
     <input type="submit" value="Add" class="btn btn-primary" id="submitNewCert">
-  </form>
+    </div>
+        </form>
 </div>
 
+<!-- Adding delete, edit, and detail buttons that links to html -->
+<form action = "certDelete.html">
+<input type="submit" value="Delete" class="btn btn-primary" id="submitNewCert">
+</form>
+</body>
+
+<div class="container-fluid">
+  <p class = "p"> This website is for OCFR volunteers and employees only. Information on this site must not be released to the public without permission. </p>
+</div>
+
+<!-- Delete Modal -->
+<!-- <div id="deleteModal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form v-on:submit = "deleteCert">
+        <div class="modal-header">
+          <h5 class="modal-title">Delete current certification</h5>
+          <button type="submit" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>Delete this certification?</p>
+        </div>
+        <div class="modal-footer">
+          <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+          <input type="submit" class="btn btn-danger" value="Delete">
+        </div>
+      </form>
+    </div>
+  </div>
+</div> -->
 
 
 
@@ -118,7 +140,8 @@
   <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js"></script>
   <script src="js/certification.app.js"></script>
+  <!-- <script src="js/certificationDetail.app.js"></script> -->
 
-      </body>
     </html>

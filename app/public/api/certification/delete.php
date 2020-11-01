@@ -1,9 +1,9 @@
 <?php
-
+require 'common.php';
 
 $db = DbConnection::getConnection();
 $stmt = $db->prepare(
-  'DELETE FROM Certifications
+  'DELETE FROM Certification
   WHERE certificationID = ?');
 
 
@@ -12,3 +12,6 @@ $stmt = $db->prepare(
   ]);
 
   header('HTTP/1.1 303 See Other');
+
+  header('Location: ../certification')
+?>

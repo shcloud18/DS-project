@@ -69,7 +69,7 @@
                 </tr>
               </tbody>
             </table>
-
+            <button type="button" class="btn btn-dark" onclick="exportTableToCSV('memberReport.csv')">Export as CSV</button>
           </div>
 
 
@@ -84,5 +84,7 @@
          <!-- table sort from https://github.com/tristen/tablesort -->
          <script src=js/tablesort.min.js></script>
          <script>new Tablesort(document.getElementById('memberTable'));</script>
+         <!-- export from codexworld.com/export-html-table-data-to-csv-using-javascript/  -->
+         <script src=js/exportMembersToCSV.app.js></script>
     </body>
     </html>
