@@ -9,7 +9,10 @@ var editCert = new Vue({
     fetchCert() {
       fetch('api/certification/index.php')
       .then(response => response.json())
-      .then(json => { updateCert.certList = json })
+      .then(json => {
+        this.certList = json;
+      console.log(this.certList);
+    });
     },
 
     updateCert() {
