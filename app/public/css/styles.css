@@ -36,7 +36,7 @@ nav {
     font-weight: bold;
     border:2px groove black;
     padding:10px;
-    text-align:center;
+    text-align: center;
     background-color: #d1d1d1;
 }
 
@@ -50,4 +50,18 @@ body{
   border: 1px solid #999;
   border-radius: 5px;
   background-color: white;
+}
+
+#csvbutton {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  border: 3px solid red;
+}
+
+.h4  {
+    color: #003153;
+    font-size: 15px;
+    font-family: "Georgia";
+    text-align: center;
 }

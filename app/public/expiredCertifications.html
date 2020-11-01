@@ -78,27 +78,29 @@
                </tr>
              </tbody>
            </table>
-
-
+           <br>
+           <div class = "row">
+             <div class = "col-xs-2">
+  <button id="csvbutton" type="button" class="btn btn-dark" onclick="exportTableToCSV('ExpCertReport.csv')">Export as CSV</button>
+</div>
+</div>
+<hr>
+<span>
            <div class= "choose">
-             <h4> Filter by Certification </h4>
+             <div class="col-lg-6 col-xs-12">
+             <h4 class = "h4"> <strong> Filter by Certification </h4>
              <select v-model="certifications.certificationName">
                <option value=""> All</option>
                <option v-for= "cert in ExpiredCertifications">{{ cert.certificationName }} </option>
              </select>
            </div>
-         </br>
+         </div>
+        </span>
+      <hr>
+</div>
 
+<!-- filtering code from Jenna Houterloot -->
 
-
-
-           <!-- <form v-on:submit.prevent="handleExpiredCerts()" method="post" id="expiredcertsdropdown">
-               <div class = "form-group">
-                   <label for="expcert"> Certifications</label>
-                   <input type="text" v-model = "certifications.certificationName" placeholder="CPR">
-                     <div id="success"></div>
-                     <button class = "btn btn-primary btn-sm" onclick="success()" id="submit" type="submit"> Search </button>
-                   </div> -->
 
                </div>
 
@@ -112,7 +114,6 @@
          </div>
        </div>
 
-</body>
          </main>
 
          <link rel="stylesheet" href="css/styles.css">
@@ -125,5 +126,6 @@
 
            <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
          <script src="js/expiredCertifications.app.js"></script>
+          <script src=js/exportExpCertstoCSV.app.js></script>
     </body>
     </html>
