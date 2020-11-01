@@ -89,9 +89,7 @@
                        <td> {{ member.isActive }}</td>
                        <td> {{ member.dob }}</td>
                        <td> {{ member.startDate }}</td>
-                       <td><button title="Detail" @click="handleClick(m)" data-toggle="modal" data-target="#modal-detail"><img src="./img/detail.png" class="button"></button>
-                <button title="Edit" @click="handleEdit(m)"><img src="./img/edit.png" class="button"></button>
-                <button title="Delete" @click="handleDelete(m)"><img src="./img/delete.png" class="button"></button></td>
+                       
 
 
                    </tr>
@@ -138,12 +136,23 @@
                     <input type="date" v-model="newMember.startDate" class="form-control" id="startdate">
                   </div></br>
                   <button type="submit" value="Submit" class="btn btn-primary" id=submitNewMember> Add New Member </button>
+
+                  <!-- <form action = "memberDelete.html">
+                  <button type="submit" value="Delete" class="btn btn-primary"> Delete </button>
+                  </form> -->
+
+
                 </form>
                 <br>
               </div>
             </div>
           </div>
+          <form action = "memberDelete.html">
+          <button type="submit" value="Delete" class="btn btn-primary"> Delete </button>
+          </form>
+        </body>
           <p> Every field is required, please put "N/A" for fields where info is not available. </p>
+
 
          <!-- <main class="row">
 
