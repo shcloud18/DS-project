@@ -44,13 +44,10 @@
 
 
           <div class="container-fluid">
-            <div class="row" id="membersApp">
-              <div class= "col-lg-3 col-md-3 col-sm-3 col-xs-3" >
-                <div class="members" v-for="member in members">
-                </div>
-                <br>
-                <table class="table table-bordered table-striped table-hover table-condensed col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                    <thead>
+            <div class="row container-fluid" id="membersApp">
+              <div class="container-fluid">
+                <table class="table table-bordered table-striped table-hover table-condensed container-fluid">
+                    <thead class="thead-dark">
                         <tr>
                             <th class="text-center">Member ID </th>
                             <th class="text-center">Position</th>
@@ -67,12 +64,9 @@
                             <th class="text-center">Is Active?</th>
                             <th class="text-center">DOB</th>
                             <th class="text-center">Start Date</th>
-
                         </tr>
                     </thead>
-
                     <tbody class="text-center">
-
                    <tr v-for="member in members">
                        <td> {{ member.memberID  }}</td>
                        <td> {{ member.position }}</td>
@@ -89,7 +83,11 @@
                        <td> {{ member.isActive }}</td>
                        <td> {{ member.dob }}</td>
                        <td> {{ member.startDate }}</td>
+
                        
+
+                       <td><button title="Detail" @click="handleClick(m)" data-toggle="modal" data-target="#modal-detail"></button>
+
 
 
                    </tr>
@@ -97,43 +95,59 @@
                </table>
 
 
-
+<!-- SUPER IMPORTANT!! THIS WORKS
                 <form v-on:submit.prevent="createMember()" method="post" id="newMemberForm">
                   <div class="members">
-                    <label for="memberID"> Member ID </label>
-                    <input type="text" v-model="newMember.memberID" class="form-control" id="memberID">
-                    <label for="position"> Position </label>
-                    <input type="text" v-model="newMember.position" class="form-control" id="position">
-                    <label for="firstName"> First Name </label>
-                    <input type="text" v-model= "newMember.firstName" class="form-control" id="firstname">
-                    <label for="lastName"> Last Name </label>
-                    <input type="text" v-model= "newMember.lastName" class="form-control" id="lastname">
-                    <label for="email"> Email </label>
-                    <input type="text" v-model="newMember.email" class="form-control" id="email">
-                    <label for="gender"> Gender </label>
-                    <input type="text" v-model="newMember.gender" class= "form-control" id="gender">
-                    <label for="address"> Address </label>
-                    <input type="text" v-model="newMember.address" class="form-control" id="address">
-                    <label for="city"> City </label>
-                    <input type="text" v-model="newMember.city" class="form-control" id="city">
-                    <label for="address"> State </label>
-                    <input type="text" v-model="newMember.state" class="form-control" id="state">
-                    <label for="address"> Work Phone </label>
-                    <input type="tel" v-model="newMember.workPhone" class="form-control" id="phone">
-                    <label for="address"> Radio Number </label>
-                    <input type="number" v-model="newMember.radioNumber" class="form-control" id="radionumber">
-                    <label for="address"> Station Number </label>
-                    <input type="text" v-model="newMember.stationNumber" class="form-control" id="address">
-                    <label for="status"> Status </label>
-                    <select class="form-control" id="status" v-model="newMember.isActive" required>
-                      <option></option>
-                      <option>Active</option>
-                      <option>Not Active</option>
-                    </select>
-                    <label for="dob"> Date of Birth </label>
-                    <input type="date" v-model="newMember.dob" class="form-control" id="dob">
-                    <label for="startdate"> Start Date </label>
-                    <input type="date" v-model="newMember.startDate" class="form-control" id="startdate">
+
+                      <label for="memberID"> Member ID </label>
+                      <input type="text" v-model="newMember.memberID" class="form-control" id="memberID">
+
+                      <label for="position"> Position </label>
+                      <input type="text" v-model="newMember.position" class="form-control" id="position">
+
+                      <label for="startdate"> Start Date </label>
+                      <input type="date" v-model="newMember.startDate" class="form-control" id="startdate">
+
+                      <label for="firstName"> First Name </label>
+                      <input type="text" v-model= "newMember.firstName" class="form-control" id="firstname">
+
+                      <label for="lastName"> Last Name </label>
+                      <input type="text" v-model= "newMember.lastName" class="form-control" id="lastname">
+
+                      <label for="email"> Email </label>
+                      <input type="text" v-model="newMember.email" class="form-control" id="email">
+
+                      <label for="gender"> Gender </label>
+                      <input type="text" v-model="newMember.gender" class= "form-control" id="gender">
+
+                      <label for="address"> Address </label>
+                      <input type="text" v-model="newMember.address" class="form-control" id="address">
+
+                      <label for="city"> City </label>
+                      <input type="text" v-model="newMember.city" class="form-control" id="city">
+
+                      <label for="address"> State </label>
+                      <input type="text" v-model="newMember.state" class="form-control" id="state">
+
+                      <label for="address"> Work Phone </label>
+                      <input type="tel" v-model="newMember.workPhone" class="form-control" id="phone">
+
+                      <label for="address"> Radio Number </label>
+                      <input type="number" v-model="newMember.radioNumber" class="form-control" id="radionumber">
+
+                      <label for="address"> Station Number </label>
+                      <input type="text" v-model="newMember.stationNumber" class="form-control" id="address">
+
+                      <label for="status"> Status </label>
+                      <select class="form-control" id="status" v-model="newMember.isActive" required>
+                        <option></option>
+                        <option>Active</option>
+                        <option>Not Active</option>
+                      </select>
+
+                      <label for="dob"> Date of Birth </label>
+                      <input type="date" v-model="newMember.dob" class="form-control" id="dob">
+
                   </div></br>
                   <button type="submit" value="Submit" class="btn btn-primary" id=submitNewMember> Add New Member </button>
 
@@ -143,14 +157,126 @@
 
 
                 </form>
-                <br>
+-->
+
+<form v-on:submit.prevent="createMember()" method="post" id="newMemberForm">
+  <div class="members">
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="memberID">Member ID</label>
+      <input type="number" class="form-control" id="memberID" placeholder="Member ID" v-model="newMember.memberID" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="position">Position</label>
+      <input type="text" class="form-control" id="position" placeholder="Position" v-model="newMember.position" required>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="firstName">First Name</label>
+      <input type="text" class="form-control" id="firstName" placeholder="First" v-model="newMember.firstName" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="lastName">Last Name</label>
+      <input type="text" class="form-control" id="lastName" placeholder="Last" v-model="newMember.lastName" required>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="startdate">Start Date</label>
+      <input type="date" v-model="newMember.startDate" class="form-control" id="startdate" v-model="newMember.startDate">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="dob">Date of Birth</label>
+      <input type="date" v-model="newMember.dob" class="form-control" id="dob" v-model="newMember.dob">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="status">Gender</label>
+      <select class="form-control" id="gender" v-model="newMember.gender" required>
+        <option>Male</option>
+        <option>Female</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="status">Status</label>
+      <select class="form-control" id="status" v-model="newMember.isActive" required>
+        <option></option>
+        <option>Active</option>
+        <option>Not Active</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="phone">Phone</label>
+      <input type="tel" class="form-control" id="phone" placeholder="404-555-8080"  v-model="newMember.workPhone" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" placeholder="example@ocfr.org" v-model="newMember.email" required>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="phone">Station Number</label>
+      <input type="num" class="form-control" id="stationNumber" placeholder="Station Number"  v-model="newMember.stationNumber" required>
+    </div>
+    <div class="form-group col-md-6">
+      <label for="radioNumber">Radio Number</label>
+      <input type="text" class="form-control" id="radioNumber" placeholder="Radio #" v-model="newMember.radioNumber" required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="address">Address</label>
+    <input type="text" class="form-control" id="address" placeholder="1234 Main St" v-model="newMember.address">
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-7">
+      <label for="city">City</label>
+      <input type="text" class="form-control" id="inputCity" placeholder="City" v-model="newMember.city">
+    </div>
+    <div class="form-group col-md-5">
+      <label for="state">State</label>
+      <input type="text" class="form-control" id="state" placeholder="GA" v-model="newMember.state">
+    </div>
+  </div>
+
+  <button type="submit" value="Submit" class="btn btn-primary" id=submitNewMember> Add New Member </button>
+</br>
+
+</div>
+</form> </br>
+<form action = "editMember.html">
+<input type="submit" value="Edit Member" class="btn btn-warning">
+</form>
+</br>
+<form action = "deleteMember.html">
+<input type="submit" value="Delete Member" class="btn btn-danger">
+</form>
               </div>
             </div>
           </div>
+
           <form action = "memberDelete.html">
           <button type="submit" value="Delete" class="btn btn-primary"> Delete </button>
           </form>
         </body>
+
+        </br>
+
+        </br>
+
           <p> Every field is required, please put "N/A" for fields where info is not available. </p>
 
 
@@ -223,8 +349,8 @@
                     </table>
                   </div>
 
-                  <!-- Modal to view members detail-->
-                  <!--
+                   Modal to view members detail
+
                            <div class="modal-body text-center">
                              <table class="table table-striped text-center">
                                <tr><td>Position</td><td>{{ member.position }}</td></tr>

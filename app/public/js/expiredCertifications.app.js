@@ -38,13 +38,25 @@ var expiredCertificationsApp = new Vue({
           }
         })
         .then(response => response.json())
-        .then(json => { this.ExpiredCertifications=json;
-        console.log(this.ExpiredCertifications);
-      })
+        this.handleData();
       },
-},
+
+    handleData(){
+      this.certifications = {
+        certificationName:''
+      }
+
+    }
+  },
+
 created() {
   this.fetchExpiredCertifications();
   // this.fetchExpCertsFilter();
 }
 });
+
+
+function success() {
+  alert("Would you like to filter this certification?");
+  window.location.href = "certifications.html"
+}
