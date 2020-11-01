@@ -34,6 +34,7 @@ var deleteCert = new Vue({
   created(){
     this.fetchCert();
   }
+
 });
 
 function success() {

@@ -1,14 +1,56 @@
-var memWCert = new Vue({
-  el: '#memWCert',
+var memberCert = new Vue({
+  el: '#memberCert',
   data: {
-    memberCert: []
-  },
+    certList: [{
+      certificationID:'',
+      certifyingAgency:'',
+      certificationName:'',
+      defaultexpirationPeriod:''
+    }],
+    newCert:{
+      certificationID:'',
+      certifyingAgency:'',
+      certificationName:'',
+      defaultexpirationPeriod:''
+    },
+    activeCert:null,
+    activeMember:null,
+    certMem:[],
+    certDetails:[],
+    select:{
+      certList:''
+    }
+    },
 
   methods: {
-    fetchMemberCert() {
+    fetchCertDetails() {
       fetch('api/certification/MemWithCert.php')
       .then(response => response.json())
-      .then(json => { memberCert.memberCert = json })
+      .then(json => { this.certDetails = json;
+      console.log(this.certDetails);
+      });
+    },
+
+    detailCert(cid) {
+
+      fetch('api/certification/MemWithCert.php', {
+        method:'POST',
+        body: JSON.stringify({
+          "certificationID": cid
+        }),
+        headers: {
+          "Content-Type": "application/json; charset=utf-8"
+        }
+      })
+      .then(response => response.json())
+      .then(json => {
+        console.log("Returned from post", json);
+
+        this.activeCert=json;
+      });
+
+      console.log("Updating (POSTing)...!");
+      console.log(this.certDetails)
     },
 
   //   deleteCert() {
@@ -31,6 +73,7 @@ var memWCert = new Vue({
   // },
 
   created(){
-    this.fetchMemberCert();
+    this.fetchCertDetails();
+  }
   }
 });

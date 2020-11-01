@@ -4,6 +4,11 @@
       <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="icon" href="data:;base64,=">
+
         <title>Certifications</title>
     </head>
 
@@ -45,7 +50,6 @@
 
          <main class="row">
 
-                    <hr>
 
 
 
@@ -91,19 +95,32 @@
       <input type="text" v-model="newCert.defaultExpirationPeriod" placeholder="Expiration Year">
     </div>
 
-    <div>
-    <input type="submit" value="Add" class="btn btn-primary" id="submitNewCert">
-    </div>
+      <div>
+      <input type="submit" value="Add" class="btn btn-primary" id="submitNewCert">
+      </div>
+
+
+
+      </body>
+
         </form>
 </div>
 
-<!-- Adding delete, edit, and detail buttons that links to html -->
 <form action = "certDelete.html">
 <input type="submit" value="Delete" class="btn btn-primary" id="submitNewCert">
 </form>
+
 <form action = "certDetail.html">
-<input type="submit" value="Edit" class="btn btn-primary" id="submitNewCert">
+<input type="submit" value="Certification Detail" class="btn btn-primary" id="submitNewCert">
 </form>
+
+<!-- Adding delete, edit, and detail buttons that links to html -->
+<!-- <form action = "certDelete.html">
+<input type="submit" value="Delete" class="btn btn-primary" id="submitNewCert">
+</form>
+<form action = "certDetail.html">
+<input type="submit" value="Certification Detail" class="btn btn-primary" id="submitNewCert">
+</form> -->
 </body>
 
 <div class="container-fluid">
@@ -135,10 +152,7 @@
 
 
   </main>
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="icon" href="data:;base64,=">
+
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
