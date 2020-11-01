@@ -83,7 +83,11 @@
                        <td> {{ member.isActive }}</td>
                        <td> {{ member.dob }}</td>
                        <td> {{ member.startDate }}</td>
+
+                       
+
                        <td><button title="Detail" @click="handleClick(m)" data-toggle="modal" data-target="#modal-detail"></button>
+
 
 
                    </tr>
@@ -146,6 +150,12 @@
 
                   </div></br>
                   <button type="submit" value="Submit" class="btn btn-primary" id=submitNewMember> Add New Member </button>
+
+                  <!-- <form action = "memberDelete.html">
+                  <button type="submit" value="Delete" class="btn btn-primary"> Delete </button>
+                  </form> -->
+
+
                 </form>
 -->
 
@@ -257,10 +267,18 @@
               </div>
             </div>
           </div>
+
+          <form action = "memberDelete.html">
+          <button type="submit" value="Delete" class="btn btn-primary"> Delete </button>
+          </form>
+        </body>
+
         </br>
 
         </br>
+
           <p> Every field is required, please put "N/A" for fields where info is not available. </p>
+
 
          <!-- <main class="row">
 
