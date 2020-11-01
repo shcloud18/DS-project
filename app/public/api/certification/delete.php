@@ -3,7 +3,7 @@
 
 $db = DbConnection::getConnection();
 $stmt = $db->prepare(
-  'DELETE FROM Certifications
+  'DELETE FROM Certification
   WHERE certificationID = ?');
 
 

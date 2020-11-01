@@ -3,7 +3,7 @@
 $db = DbConnection::getConnection();
 
 $stmt = $db->prepare(
-  'UPDATE Certifications
+  'UPDATE Certification
   SET certificationName = ?, certifyingAgency = ?, defaultexpirationPeriod = ? WHERE certificationID = ?'
 );
 
