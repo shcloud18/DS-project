@@ -6,7 +6,7 @@ $db = DbConnection::getConnection();
 //Step 2 : Create & run the query
 // Note the use of parameterized statements to avoid injection
 $stmt = $db->prepare(
-  'INSERT INTO Certification  (certificationID, certificationName, certifyingAgency, defaultexpirationPeriod)
+  'INSERT INTO Certification  (certificationID, certificationName, certifyingAgency, defaultExpirationPeriod)
   VALUES  (?,?,?,?)'
 );
 
@@ -14,7 +14,7 @@ $stmt->execute([
   $_POST['certificationID'],
   $_POST['certificationName'],
   $_POST['certifyingAgency'],
-  $_POST['defaultexpirationPeriod']
+  $_POST['defaultExpirationPeriod']
 ]);
 
 // If needed, get auto-generated PK from // DB

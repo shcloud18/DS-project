@@ -57,8 +57,8 @@
       <tr>
         <th scope="col">Certification ID</th>
         <th scope="col">Certification Name</th>
-        <th scope="col">Expiration Period</th>
         <th scope="col">Certifying Agency</th>
+        <th scope="col">Expiration Period (years)</th>
       </tr>
     </thead>
     <tbody>
@@ -74,6 +74,7 @@
 
 <!-- Forms -->
   <form v-on:submit.prevent="createCert()" method="post" id="newCert">
+    <div class = "certs">
     <div class="form-group">
       <label for="cID"> Certification ID </label>
       <input type="text" v-model="newCert.certificationID" placeholder="C0001">
@@ -91,16 +92,26 @@
       <input type="text" v-model="newCert.defaultExpirationPeriod" placeholder="Expiration Year">
     </div>
 
-    <div>
+<div class="row">
+    <div class="column">
     <input type="submit" value="Add" class="btn btn-primary" id="submitNewCert">
-    </div>
+  </div>
         </form>
-</div>
+
 
 <!-- Adding delete, edit, and detail buttons that links to html -->
-<form action = "certDelete.html">
-<input type="submit" value="Delete" class="btn btn-primary" id="submitNewCert">
-</form>
+<div class="column">
+  <form action = "certDelete.html">
+    <input type="submit" value="Delete" class="btn btn-primary" id="DeleteCert">
+  </form>
+</div>
+
+<div class="column">
+  <form action = "certEdit.html">
+    <input type="submit" value="Edit" class="btn btn-primary" id="EditCert">
+  </form>
+</div>
+</div>
 </body>
 
 <div class="container-fluid">
@@ -142,6 +153,7 @@
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js"></script>
   <script src="js/certification.app.js"></script>
+
   <!-- <script src="js/certificationDetail.app.js"></script> -->
 
     </html>
