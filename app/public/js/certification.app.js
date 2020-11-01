@@ -3,15 +3,15 @@ waitingApp = new Vue({
   data: {
     certList: [{
       certificationID:'',
-      certifyingAgency:'',
       certificationName:'',
-      defaultexpirationPeriod:''
+      certifyingAgency:'',
+      defaultExpirationPeriod:''
     }],
     newCert:{
       certificationID:'',
-      certifyingAgency:'',
       certificationName:'',
-      defaultexpirationPeriod:''
+      certifyingAgency:'',
+      defaultExpirationPeriod:''
     }
   },
 
@@ -51,7 +51,7 @@ waitingApp = new Vue({
         certificationID: '',
         certificationName: '',
         certifyingAgency: '',
-        defaultexpirationPeriod: ''
+        defaultExpirationPeriod: ''
       }
     },
 
