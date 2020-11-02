@@ -81,7 +81,7 @@
            <br>
            <div class = "row">
              <div class = "col-xs-2">
-  <button id="csvbutton" type="button" class="btn btn-dark" onclick="exportTableToCSV('ExpCertReport.csv')">Export as CSV</button>
+  <button type="button" class="btn btn-dark" onclick="exportTableToCSV('ExpCertReport.csv')">Export as CSV</button>
 </div>
 </div>
 <hr>
@@ -94,6 +94,7 @@
                <option v-for= "cert in ExpiredCertifications">{{ cert.certificationName }} </option>
              </select>
            </div>
+         </br>
          </div>
         </span>
       <hr>

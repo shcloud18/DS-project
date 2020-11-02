@@ -2,19 +2,24 @@
 require 'common.php';
 
 $db = DbConnection::getConnection();
-
+$certificationName = $_POST['certificationName'];
+$certifyingAgency = $_POST['certifyingAgency'];
+$defaultExpirationPeriod = $_POST['defaultExpirationPeriod'];
+$certificationID = $_POST['certificationID'];
 $stmt = $db->prepare(
-  'UPDATE Certification
-  SET certificationName = ?, certifyingAgency = ?, defaultExpirationPeriod = ? WHERE certificationID = ?'
+  "UPDATE Certification
+  SET certificationName = '$certificationName',
+      certifyingAgency = '$certifyingAgency',
+      defaultExpirationPeriod = '$defaultExpirationPeriod'
+      WHERE certificationID = '$certificationID'");
 
-);
+
 
 $stmt->execute([
-  $_POST['certificationID'],
-  $_POST['certificationName'],
-  $_POST['certifyingAgency'],
-  $_POST['defaultExpirationPeriod']
+
 ]);
 
 header('Content-Type: application/json');
-echo $json;
+
+header('Location: ../certification')
+?>

@@ -4,9 +4,7 @@
       <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
     <link rel="icon" href="data:;base64,=">
 
         <title>Certifications</title>
@@ -56,7 +54,7 @@
 <!-- Certification table -->
 <div class="container-fluid" id="certificationApp">
 <h3>Certifications</h3>
-  <table class="table table-striped">
+  <table class="table table-bordered table-striped table-hover table-condensed container-fluid">
     <thead class="thead-dark">
       <tr>
         <th scope="col">Certification ID</th>
@@ -65,7 +63,7 @@
         <th scope="col">Expiration Period (years)</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="text-center">
       <tr class="certList" v-for="c in certList">
         <td>{{c.certificationID}}</td>
         <td>{{c.certificationName}}</td>
@@ -80,47 +78,45 @@
   <form v-on:submit.prevent="createCert()" method="post" id="newCert">
     <div class = "certs">
     <div class="form-group">
+      <div class="form-row">
       <label for="cID"> Certification ID </label>
-      <input type="text" v-model="newCert.certificationID" placeholder="C0001">
+      <input type="text" class="form-control" v-model="newCert.certificationID" placeholder="C0001" required>
     </div>
-    <div class="form-group">
+    <div class="form-row">
       <label for="cName"> Certification Name </label>
-      <input type="text" v-model="newCert.certificationName" placeholder="Certification Name">
+      <input type="text" class="form-control" v-model="newCert.certificationName" placeholder="Certification Name" required>
     </div>
-    <div class="form-group">
+
+    <div class="form-row">
       <label for="cAgency"> Certifying Agency </label>
-      <input type="text" v-model="newCert.certifyingAgency" placeholder="Agency Name">
+      <input type="text" class="form-control" v-model="newCert.certifyingAgency" placeholder="Agency Name" required>
     </div>
-    <div class="form-group">
+    <div class="form-row">
       <label for="defaultexpPeriod"> Expiration Period </label>
-      <input type="text" v-model="newCert.defaultExpirationPeriod" placeholder="Expiration Year">
+      <input type="text" class="form-control" v-model="newCert.defaultExpirationPeriod" placeholder="Expiration Year" required>
     </div>
-
-
-      <div>
-      <input type="submit" value="Add" class="btn btn-primary" id="submitNewCert">
-      </div>
-
-
-
-      </body>
-
-=======
-<div class="row">
-    <div class="column">
-    <input type="submit" value="Add" class="btn btn-primary" id="submitNewCert">
   </div>
 
-        </form>
+<button type="submit" value="Submit" class="btn btn-primary" id=submitnewcert> Add </button>
+</br>
+</div>
+</form> </br>
 
+<form action = "certEdit.html">
+<input type="submit" value="Edit" class="btn btn-warning" id="Editing">
+  </form>
+</br>
 
 <form action = "certDelete.html">
-<input type="submit" value="Delete" class="btn btn-primary" id="submitNewCert">
+<input type="submit" value="Delete" class="btn btn-danger" id="delete">
 </form>
+</br>
+
 
 <form action = "certDetail.html">
 <input type="submit" value="Certification Detail" class="btn btn-primary" id="submitNewCert">
 </form>
+</br>
 
 <!-- Adding delete, edit, and detail buttons that links to html -->
 <!-- <form action = "certDelete.html">
@@ -132,8 +128,6 @@
 
 </body>
 
-<div class="container-fluid">
-  <p class = "p"> This website is for OCFR volunteers and employees only. Information on this site must not be released to the public without permission. </p>
 </div>
 
 <!-- Delete Modal -->
@@ -161,12 +155,15 @@
 
 
   </main>
-
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/styles.css">
   <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="js/certification.app.js"></script>
 
   <!-- <script src="js/certificationDetail.app.js"></script> -->
