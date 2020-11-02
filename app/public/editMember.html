@@ -43,8 +43,8 @@
 
 
 <!-- Table to show members -->
-          <div class="container-fluid" id="editMember">
-            <div class="row container-fluid" id="editMember">>
+
+          <div class="container-fluid" id="editMemberElement">
               <div class="container-fluid">
                 <table class="table table-bordered table-striped table-hover table-condensed container-fluid">
                     <thead class="thead-dark">
@@ -90,55 +90,54 @@
                  </tbody>
                </table>
 <!-- Form to edit -->
-<form v-on:submit.prevent="editMember()" method="post" id="editMember">
+<form v-on:submit.prevent="timeToEditTheMember" method="post">
   <div class="members">
 
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="memberID">Member ID</label>
-      <input type="number" class="form-control" id="memberID" placeholder="Member ID" v-model="editMember.memberID" required>
+      <input type="number" class="form-control" name="memberID" placeholder="Member ID" v-model="editMember.memberID" required>
     </div>
     <div class="form-group col-md-6">
       <label for="position">Position</label>
-      <input type="text" class="form-control" id="position" placeholder="Position" v-model="editMember.position" required>
+      <input type="text" class="form-control" name="position" placeholder="Position" v-model="editMember.position" required>
     </div>
   </div>
 
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="firstName">First Name</label>
-      <input type="text" class="form-control" id="firstName" placeholder="First" v-model="editMember.firstName" required>
+      <input type="text" class="form-control" name="firstName" placeholder="First" v-model="editMember.firstName" required>
     </div>
     <div class="form-group col-md-6">
       <label for="lastName">Last Name</label>
-      <input type="text" class="form-control" id="lastName" placeholder="Last" v-model="editMember.lastName" required>
+      <input type="text" class="form-control" name="lastName" placeholder="Last" v-model="editMember.lastName" required>
     </div>
   </div>
 
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="startdate">Start Date</label>
-      <input type="date" v-model="editMember.startDate" class="form-control" id="startdate" v-model="editMember.startDate">
+      <input type="date" class="form-control" name="startdate" v-model="editMember.startDate">
     </div>
     <div class="form-group col-md-6">
       <label for="dob">Date of Birth</label>
-      <input type="date" v-model="editMember.dob" class="form-control" id="dob" v-model="editMember.dob">
+      <input type="date" class="form-control" name="dob" v-model="editMember.dob">
     </div>
   </div>
 
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="status">Gender</label>
-      <select class="form-control" id="gender" v-model="editMember.gender" required>
+      <select class="form-control" name="gender" v-model="editMember.gender" required>
         <option>Male</option>
         <option>Female</option>
         <option>Other</option>
       </select>
     </div>
     <div class="form-group col-md-6">
-      <label for="status">Status</label>
-      <select class="form-control" id="status" v-model="editMember.isActive" required>
-        <option></option>
+      <label for="isActive">Status</label>
+      <select class="form-control" name="isActive" v-model="editMember.isActive" required>
         <option>Active</option>
         <option>Not Active</option>
       </select>
@@ -147,43 +146,43 @@
 
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="phone">Phone</label>
-      <input type="tel" class="form-control" id="phone" placeholder="404-555-8080"  v-model="editMember.workPhone" required>
+      <label for="workPhone">Phone</label>
+      <input type="tel" class="form-control" name="workPhone" placeholder="404-555-8080"  v-model="editMember.workPhone" required>
     </div>
     <div class="form-group col-md-6">
       <label for="email">Email</label>
-      <input type="email" class="form-control" id="email" placeholder="example@ocfr.org" v-model="editMember.email" required>
+      <input type="email" class="form-control" name="email" placeholder="example@ocfr.org" v-model="editMember.email" required>
     </div>
   </div>
 
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="phone">Station Number</label>
-      <input type="num" class="form-control" id="stationNumber" placeholder="Station Number"  v-model="editMember.stationNumber" required>
+      <input type="num" class="form-control" name="stationNumber" placeholder="Station Number"  v-model="editMember.stationNumber" required>
     </div>
     <div class="form-group col-md-6">
       <label for="radioNumber">Radio Number</label>
-      <input type="text" class="form-control" id="radioNumber" placeholder="Radio #" v-model="editMember.radioNumber" required>
+      <input type="text" class="form-control" name="radioNumber" placeholder="Radio #" v-model="editMember.radioNumber" required>
     </div>
   </div>
 
   <div class="form-group">
     <label for="address">Address</label>
-    <input type="text" class="form-control" id="address" placeholder="1234 Main St" v-model="editMember.address">
+    <input type="text" class="form-control" name="address" placeholder="123 Main St" v-model="editMember.address">
   </div>
 
   <div class="form-row">
     <div class="form-group col-md-7">
       <label for="city">City</label>
-      <input type="text" class="form-control" id="inputCity" placeholder="City" v-model="editMember.city">
+      <input type="text" class="form-control" name="city" placeholder="City" v-model="editMember.city">
     </div>
     <div class="form-group col-md-5">
       <label for="state">State</label>
-      <input type="text" class="form-control" id="state" placeholder="GA" v-model="editMember.state">
+      <input type="text" class="form-control" name="state" placeholder="GA" v-model="editMember.state">
     </div>
   </div>
 
-  <button type="submit" value="Submit" class="btn btn-primary" id=editMember> Edit Member </button>
+  <button type="submit" value="Submit" class="btn btn-primary">Edit Member</button>
 
 </div>
 </form>
