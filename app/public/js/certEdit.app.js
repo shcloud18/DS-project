@@ -1,8 +1,18 @@
 var editCert = new Vue({
   el: '#editCert',
   data: {
-    certList: [],
-    certification: {}
+    certList: [{
+      certificationID: '',
+      certificationName: '',
+      certifyingAgency: '',
+      defaultExpirationPeriod: ''
+    }],
+    certification: {
+      certificationID: '',
+      certificationName: '',
+      certifyingAgency: '',
+      defaultExpirationPeriod: ''
+    }
   },
 
   methods: {
@@ -19,7 +29,7 @@ var editCert = new Vue({
     },
     timetoeditcertification( evt ) {
       console.log("hello");
-      fetch('api/certification/update.php',{
+      fetch('api/certification/update.php', {
         method:'POST',
         body: JSON.stringify(this.certification),
         headers:{
