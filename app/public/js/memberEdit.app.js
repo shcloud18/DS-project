@@ -1,5 +1,5 @@
 var editMember = new Vue({
-      el: '#editMember',
+      el: '#editMemberElement',
       data: {
           members: [{
             memberID: '',
@@ -46,9 +46,12 @@ var editMember = new Vue({
               console.log(this.members);
     });
   },
+    something( evt ){
+      console.log(this.editMember);
+    },
 
-
-    editMember() {
+    timeToEditTheMember( evt ) {
+      console.log("hi adam");
       fetch('api/firefighters/edit.php', {
         method: 'POST',
         body: JSON.stringify(this.editMember),
@@ -56,14 +59,15 @@ var editMember = new Vue({
           "Content-Type": "application/json; charset=utf-8"
         }
       })
-      .then (response => response.json() )
-      .then( json => {
-        console.log ("Returned from post:", json);
-        this.members = json;
-        this.editMember = this.editMemberData();
-      });
+  //    .then (response => response.json() )
+      // .then( json => {
+      //   console.log ("Returned from post:", json);
+      //   this.editMember = json;
+         this.editMember = this.editMemberData();
+      // });
       console.log("Creating (POSTing)...!");
       console.log(this.editMember);
+      this.fetchMember();
     },
     editMemberData() {
       return {
@@ -91,7 +95,3 @@ var editMember = new Vue({
   }
 
 });
-function success() {
-  alert("Confirm member edit?");
-  window.location.href = "members.html"
-}
