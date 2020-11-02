@@ -1,42 +1,68 @@
 var editCert = new Vue({
   el: '#editCert',
   data: {
-    certList: [],
-    certification: {}
+    certList: [{
+      certificationID: '',
+      certificationName: '',
+      certifyingAgency: '',
+      defaultExpirationPeriod: ''
+    }],
+    certification: {
+      certificationID: '',
+      certificationName: '',
+      certifyingAgency: '',
+      defaultExpirationPeriod: ''
+    }
   },
 
   methods: {
     fetchCert() {
-      fetch('api/certification/index.php')
-      .then(response => response.json())
-      .then(json => { updateCert.certList = json })
+      fetch('api/certification/')
+      .then( response => response.json() )
+      .then( json => {
+         this.certList = json;
+         console.log(this.certList);
+    });
+  },
+    something ( evt ){
+      console.log(this.certification);
     },
-
-    updateCert() {
-      fetch('api/certification/update.php',{
+    timetoeditcertification( evt ) {
+      console.log("hello");
+      fetch('api/certification/update.php', {
         method:'POST',
         body: JSON.stringify(this.certification),
         headers:{
           "Content-Type": "application/json; charset=utf-8"
         }
       })
-      .then(response => response.text())
-      this.handleData();
+      // .then(response => response.json() )
+      // .then( json => {
+      //   console.log ("Returned from post:", json);
+      //   this.certList = json;
+        this.certification = this.updatedcert();
+      // });
+      console.log("Creating (POSTing)...!");
+      console.log(this.certification);
+      this.fetchCert();
     },
+    updatedcert() {
+      return {
+        certificationID: '',
+        certificationName: '',
+        certifyingAgency: '',
+        defaultExpirationPeriod: ''
 
-    handleData(){
-      this.certification = {
-        certificationID: ""
       }
     }
-  },
+},
 
   created(){
     this.fetchCert();
   }
 });
-
-function success() {
-  alert("Would you like to edit this certification?");
-  window.location.href = "certifications.html"
-}
+//
+// function success() {
+//   alert("Would you like to edit this certification?");
+//   window.location.href = "certifications.html"
+// }
