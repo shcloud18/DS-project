@@ -60,10 +60,17 @@
       </section>
 
       <h4>Certification Details</h4>
-        <table>
+        <table class="table table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Certification</th>
+              <th>Expiration Date</th>
           <tbody>
             <tr v-for="cd in certList" v-if="select.certList=='' || select.certList == cd.certificationName">
-              <td>{{cd.firstName}} {{cd.lastName}}</td>
+              <td>{{cd.firstName}}</td>
+              <td>{{cd.lastName}}</td>
               <td>{{cd.certificationName}}</td>
               <td>{{cd.expirationDate}}</td>
             </tr>
