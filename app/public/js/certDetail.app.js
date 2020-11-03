@@ -8,10 +8,10 @@ var memberCert = new Vue({
       defaultexpirationPeriod:''
     }],
     newCert:{
-      certificationID:'',
-      certifyingAgency:'',
+      lastName:'',
+      firstName:'',
       certificationName:'',
-      defaultexpirationPeriod:''
+      expirationDate:''
     },
     activeCert:null,
     activeMember:null,
@@ -31,13 +31,13 @@ var memberCert = new Vue({
       });
     },
 
+    something( evt ){
+      console.log("hi michael");
+},
     detailCert(cid) {
-
       fetch('api/certification/MemWithCert.php', {
-        method:'POST',
-        body: JSON.stringify({
-          "certificationID": cid
-        }),
+        method:'GET',
+        body: JSON.stringify(this.newCert),
         headers: {
           "Content-Type": "application/json; charset=utf-8"
         }
